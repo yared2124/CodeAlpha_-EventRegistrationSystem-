@@ -1,0 +1,12 @@
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+psycopg2-binary==2.9.12
+python-dotenv==1.0.0
+django-filter==23.5
+djangorestframework-simplejwt==5.3.0
+django-redis==5.4.0
+celery==5.3.4
+redis==5.0.1
+drf-spectacular==0.27.1  # For OpenAPI/Swagger docs
+gunicorn==21.2.0          # For production serverpsycopg2-binary==2.9.12
