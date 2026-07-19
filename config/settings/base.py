@@ -22,6 +22,11 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # ------------------------------------------------------------
+# 2.5 Custom User Model
+# ------------------------------------------------------------
+AUTH_USER_MODEL = 'users.User'
+
+# ------------------------------------------------------------
 # 3. Application definition
 # ------------------------------------------------------------
 INSTALLED_APPS = [
