@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_spectacular',
 
-    # Local apps (now accessible because we added apps/ to sys.path)
-    'users',
-    'events',
-    'registrations',
+  
+'apps.users',
+'apps.events',
+'apps.registrations',
 ]
 
 MIDDLEWARE = [
