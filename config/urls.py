@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from events.views import EventViewSet                  # <-- remove 'apps.'
-from registrations.views import RegistrationViewSet    # <-- remove 'apps.'
+from events.views import EventViewSet                  # <-- no 'apps.'
+from registrations.views import RegistrationViewSet
 
 router = DefaultRouter()
 router.register(r'events', EventViewSet, basename='event')
