@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from apps.registrations.models import Registration
-from apps.events.serializers import EventListSerializer
+from registrations.models import Registration
+from events.serializers import EventListSerializer
 
 class RegistrationSerializer(serializers.ModelSerializer):
     event = EventListSerializer(read_only=True)
