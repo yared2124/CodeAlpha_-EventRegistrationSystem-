@@ -9,17 +9,12 @@ class User(AbstractUser):
         ('admin', 'Admin'),
     )
 
-    # Make email unique and use it for login
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='attendee')
 
-    # Tell Django to use email as the unique identifier for authentication
     USERNAME_FIELD = 'email'
-    # Required fields when creating a superuser (username is still required by AbstractUser)
     REQUIRED_FIELDS = ['username']
 
-    class Meta:
-        app_label = 'users'   
     def __str__(self):
         return self.email
 
