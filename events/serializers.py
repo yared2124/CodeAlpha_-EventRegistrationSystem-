@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.events.models import Event
+from events.models import Event
 
 class EventListSerializer(serializers.ModelSerializer):
     available_seats = serializers.IntegerField(read_only=True)
