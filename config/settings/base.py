@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 # ------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Add 'apps' folder to Python path so we can use simple app names
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # ------------------------------------------------------------
 # 2. Load environment variables from .env file
@@ -44,10 +42,10 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_spectacular',
 
-  
-'apps.users',
-'apps.events',
-'apps.registrations',
+
+'users',
+'events',
+'registrations',
 ]
 
 MIDDLEWARE = [
