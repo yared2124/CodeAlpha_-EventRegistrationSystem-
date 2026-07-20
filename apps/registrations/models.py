@@ -37,6 +37,7 @@ class Registration(models.Model):
     cancelled_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
+        app_label = 'registrations'
         unique_together = [['user', 'event']]
         indexes = [
             models.Index(fields=['event', 'status']),
