@@ -1,8 +1,8 @@
 from django.db import transaction, IntegrityError
 from django.db.models import F
 from django.utils import timezone
-from apps.events.models import Event
-from apps.registrations.models import Registration
+from events.models import Event
+from registrations.models import Registration
 import uuid
 import logging
 
