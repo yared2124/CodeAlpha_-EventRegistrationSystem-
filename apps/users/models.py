@@ -18,6 +18,8 @@ class User(AbstractUser):
     # Required fields when creating a superuser (username is still required by AbstractUser)
     REQUIRED_FIELDS = ['username']
 
+    class Meta:
+        app_label = 'users'   
     def __str__(self):
         return self.email
 
