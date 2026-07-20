@@ -5,12 +5,12 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from django.db.models import Count, Exists, OuterRef, Q, F
 from django.db.models.functions import Coalesce
 from django.db import models
-from apps.events.models import Event
-from apps.events.serializers import EventListSerializer, EventDetailSerializer
-from apps.registrations.models import Registration
-from apps.registrations.services import RegistrationService
-from apps.registrations.serializers import RegistrationSerializer
-from apps.events.permissions import IsOrganizerOrReadOnly
+from events.models import Event                       # <-- changed
+from events.serializers import EventListSerializer, EventDetailSerializer
+from registrations.models import Registration          # <-- changed
+from registrations.services import RegistrationService
+from registrations.serializers import RegistrationSerializer
+from events.permissions import IsOrganizerOrReadOnly
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.filter(status='published')
