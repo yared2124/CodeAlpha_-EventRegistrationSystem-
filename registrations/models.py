@@ -12,7 +12,6 @@ class Registration(models.Model):
         ('waitlisted', 'Waitlisted'),
     )
 
-    # ---- Relationships ----
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -23,21 +22,16 @@ class Registration(models.Model):
         on_delete=models.CASCADE,
         related_name='registrations'
     )
-
-    # ---- Status & Ticket ----
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
         default='confirmed'
     )
     ticket_number = models.CharField(max_length=20, unique=True, blank=True)
-
-    # ---- Timestamps ----
     registered_at = models.DateTimeField(auto_now_add=True)
     cancelled_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
-        app_label = 'registrations'
         unique_together = [['user', 'event']]
         indexes = [
             models.Index(fields=['event', 'status']),
@@ -49,7 +43,6 @@ class Registration(models.Model):
         return f"{self.user.email} – {self.event.title} ({self.status})"
 
     def cancel(self):
-        """Cancel a confirmed registration and free up the seat."""
         if self.status == 'cancelled':
             raise ValueError("Registration is already cancelled.")
         if self.event.is_past:
