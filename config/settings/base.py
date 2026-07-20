@@ -35,18 +35,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third-party packages
+    # Third-party
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
     'django_filters',
     'drf_spectacular',
 
-
-'users',
-'events',
-'registrations',
+    # Local apps (now at root)
+    'users',
+    'events',
+    'registrations',
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
