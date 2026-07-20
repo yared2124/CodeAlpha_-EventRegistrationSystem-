@@ -39,6 +39,7 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        app_label = 'events'
         # Indexes for faster filtering & sorting
         indexes = [
             models.Index(fields=['status', 'start_date']),          # Homepage queries
