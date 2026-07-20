@@ -2,10 +2,10 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from apps.registrations.models import Registration
-from apps.registrations.serializers import RegistrationSerializer
-from apps.registrations.services import RegistrationService
-from apps.registrations.permissions import CanCancelRegistration
+from registrations.models import Registration
+from registrations.serializers import RegistrationSerializer
+from registrations.services import RegistrationService
+from registrations.permissions import CanCancelRegistration
 
 class RegistrationViewSet(viewsets.ModelViewSet):
     serializer_class = RegistrationSerializer
