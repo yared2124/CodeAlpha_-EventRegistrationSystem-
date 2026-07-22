@@ -2,30 +2,26 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from django.db.models import Count, Exists, OuterRef, Q, F
-from django.db.models.functions import Coalesce
+from django.db.models import Count, Exists, OuterRef, Q
 from django.db import models
-from events.models import Event                       # <-- changed
+from events.models import Event
 from events.serializers import EventListSerializer, EventDetailSerializer
-from registrations.models import Registration          # <-- changed
+from registrations.models import Registration
 from registrations.services import RegistrationService
 from registrations.serializers import RegistrationSerializer
 from events.permissions import IsOrganizerOrReadOnly
 
+
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = Event.objects.filter(status='published')
+    queryset = Event.objects.filter(status='published').order_by('-start_date')
     permission_classes = [IsAuthenticatedOrReadOnly, IsOrganizerOrReadOnly]
 
     def get_queryset(self):
+        """Optimize queryset with annotations (no available_seats annotation – it's a property)."""
         queryset = super().get_queryset()
         if self.action == 'list':
             queryset = queryset.annotate(
-                total_registrations=Count('registrations', filter=Q(registrations__status='confirmed')),
-                available_seats=Coalesce(
-                    F('capacity') - F('filled_seats'),
-                    value=0,
-                    output_field=models.IntegerField()
-                )
+                total_registrations=Count('registrations', filter=Q(registrations__status='confirmed'))
             )
             if self.request.user.is_authenticated:
                 queryset = queryset.annotate(
